@@ -1,0 +1,293 @@
+/* ======================================================================
+   form-factor.css — Lesson-Specific Styles (pairs with ./styles/brand.css)
+   Purpose: stage picker UI, glass form, validation, notes, and main width.
+   ====================================================================== */
+
+/* ------------------------------
+   1) Layout: lock main width and spacing
+------------------------------ */
+main {
+  width: 100%;
+  max-width: 760px; /* consistent column across stages */
+  margin: 0 auto;
+  padding: 0 1rem 6rem; /* bottom pad to clear the fixed footer */
+}
+
+/* Ensure stage cards align to main width */
+.stage-card {
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Panels toggled by JS via [aria-hidden] */
+.panels {
+  margin-top: 0.5rem;
+}
+.panel {
+  display: none;
+}
+.panel[aria-hidden='false'] {
+  display: block;
+}
+
+/* ------------------------------
+   2) Stage Picker (dropdown nav)
+------------------------------ */
+.stage-picker {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem auto 0.5rem;
+  max-width: 760px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px) saturate(140%);
+}
+.stage-picker strong {
+  font-weight: 700;
+  color: #111;
+}
+.stage-picker select {
+  font: inherit;
+  padding: 0.5rem 0.6rem;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.98);
+}
+.stage-nav {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 0.5rem;
+}
+.stage-nav .button {
+  appearance: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+.stage-nav .button:active {
+  transform: translateY(1px);
+}
+
+/* ------------------------------
+   3) Glassmorphism Form Container
+------------------------------ */
+.glass.form-container {
+  min-width: 400px;
+  min-height: 500px;
+  margin-top: 5rem;
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    min-width: auto;
+    width: calc(100% - 2rem);
+    margin-inline: auto;
+  }
+}
+
+/* Core form block */
+.form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+.form h2 {
+  position: relative;
+  color: white;
+  font-size: 2em;
+  font-weight: 600;
+  text-shadow: 1px 2px 4px #888;
+  margin-bottom: 1em;
+}
+.form h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 3em;
+  height: 0.1em;
+  background: white;
+  box-shadow: 1px 2px 4px #ccc;
+}
+
+/* Labels & controls */
+.form label {
+  display: block;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  color: #111;
+}
+.form input,
+.form textarea,
+.form select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  color: #888;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 0.3em;
+}
+.form input::placeholder,
+.form textarea::placeholder {
+  color: #888;
+}
+
+/* Submit/Reset buttons inside glass */
+.form input[type='submit'],
+.form input[type='reset'],
+.form button[type='submit'] {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  background: white;
+  color: #555;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Checkboxes/Radios inline patterns */
+input[type='checkbox'],
+input[type='radio'] {
+  display: inline-block;
+  width: fit-content;
+}
+input[type='checkbox'] + label,
+input[type='radio'] + label,
+label > input[type='checkbox'] + *,
+label > input[type='radio'] + * {
+  display: inline-block;
+  width: fit-content;
+  margin-right: 2rem;
+}
+
+/* Fieldset/Legend visuals */
+fieldset {
+  border: none;
+  border-top: 0.1rem solid black;
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+}
+legend {
+  margin-left: 2rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* ------------------------------
+   4) Focus & Validation
+------------------------------ */
+/* Focus (modern first) */
+.form input:focus-visible,
+.form textarea:focus-visible,
+.form select:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.95);
+  outline-offset: 2px;
+  background: white;
+  border: 1px solid rgba(99, 102, 241, 0.95);
+}
+/* Fallback */
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  background: white;
+  border: 1px solid blue;
+}
+
+/* Constraint validation (broad support) */
+.form input:invalid,
+.form textarea:invalid,
+.form select:invalid {
+  border-color: #dc2626;
+  box-shadow: 0 8px 18px rgba(220, 38, 38, 0.18);
+}
+.form input:valid,
+.form textarea:valid,
+.form select:valid {
+  border-color: #22c55e;
+  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.18);
+}
+
+/* Prefer user-* when supported (only after user interaction) */
+@supports selector(:user-invalid) {
+  .form input:user-invalid,
+  .form textarea:user-invalid,
+  .form select:user-invalid {
+    border-color: #dc2626;
+    box-shadow: 0 10px 22px rgba(220, 38, 38, 0.22);
+  }
+  .form input:user-valid,
+  .form textarea:user-valid,
+  .form select:user-valid {
+    border-color: #22c55e;
+    box-shadow: 0 10px 22px rgba(34, 197, 94, 0.22);
+  }
+}
+
+/* ------------------------------
+   5) Stage Notes (appear below forms)
+------------------------------ */
+.stage-notes {
+  max-width: 760px;
+  margin: 1.5rem auto 4rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  backdrop-filter: blur(8px) saturate(140%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.stage-notes p {
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.stage-notes pre {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  color: #fff;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  white-space: pre;
+}
+
+/* New-for-2025 callout (used inside notes) */
+.note-new {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00d2ff 0%, #3a47d5 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.note-new::before {
+  content: '🆕 ';
+}

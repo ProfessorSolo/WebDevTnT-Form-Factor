@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Form Factor — Staged Demo</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles/reset.css" />
+  <link rel="stylesheet" href="./styles/brand.css" />
+  <link rel="stylesheet" href="./styles/form-factor.css" />
+</head>
+
+<body>
+  <main>
+    <div class="stage-picker" role="region" aria-label="Choose demo stage">
+      <label for="stage" class="visually-hidden">Demo stage</label>
+      <strong>Stage:</strong>
+      <select id="stage">
+        <option value="01-text-input">01 — text input (&lt;form&gt; intro)</option>
+        <option value="02-label">02 — label</option>
+        <option value="03-fieldset">03 — fieldset</option>
+        <option value="04-password">04 — password</option>
+        <option value="05-checkbox">05 — checkbox</option>
+        <option value="06-radio">06 — radio</option>
+        <option value="07-select">07 — select</option>
+        <option value="08-textarea">08 — textarea</option>
+        <option value="09-hidden">09 — hidden</option>
+        <option value="10-submit">10 — submit</option>
+        <option value="11-visually-hidden-labels">11 — visually hidden labels</option>
+        <option value="12-focus-styling">12 — focus styling</option>
+        <option value="13-required-attribute">13 — required attribute</option>
+        <option value="14-user-valid-invalid">14 — user-valid / user-invalid</option>
+        <option value="15-all-in-one">15 — All-in-One</option>
+      </select>
+      <div class="stage-nav">
+        <button class="button" id="prevStage" type="button" aria-label="Previous stage">◀ Prev</button>
+        <button class="button" id="nextStage" type="button" aria-label="Next stage">Next ▶</button>
+      </div>
+    </div>
+
+    <section class="panels" aria-live="polite">
+      <!-- 01 -->
+      <article id="01-text-input" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form id="demo-01" class="form" action="#" method="post">
+            <h2>Form Factor - Staged</h2>
+            <fieldset>
+              <legend>Account Info</legend>
+              <label for="firstName">First name</label>
+              <input id="firstName" name="firstName" type="text" placeholder="Ada" autocomplete="given-name">
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Introduces the <code>&lt;form&gt;</code> element and a basic text input with name + autocomplete for better UX.</p>
+          <pre><code>&lt;form action="#" method="post"&gt;
+  &lt;label for="firstName"&gt;First name&lt;/label&gt;
+  &lt;input id="firstName" name="firstName" type="text" autocomplete="given-name"&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 02 -->
+      <article id="02-label" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Label</legend>
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email">
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Connect inputs and labels with matching <code>for</code>/<code>id</code> for bigger click targets and screen readers.</p>
+          <pre><code>&lt;label for="email"&gt;Email address&lt;/label&gt;
+&lt;input id="email" name="email" type="email"&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 03 -->
+      <article id="03-fieldset" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Contact preference</legend>
+              <label><input type="checkbox" name="pref" value="email"> Email</label>
+              <label><input type="checkbox" name="pref" value="sms"> SMS</label>
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> to group related controls and provide a name for the group.</p>
+          <pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Contact preference&lt;/legend&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="pref" value="email"&gt; Email&lt;/label&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="pref" value="sms"&gt; SMS&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 04 -->
+      <article id="04-password" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form" autocomplete="new-password">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Password</legend>
+              <label for="pw">Password</label>
+              <input id="pw" name="pw" type="password" placeholder="••••••••">
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p><code>type="password"</code> masks input; consider <code>autocomplete</code> hints like <code>new-password</code> or <code>current-password</code>.</p>
+          <pre><code>&lt;input id="pw" name="pw" type="password" autocomplete="new-password"&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 05 -->
+      <article id="05-checkbox" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Terms</legend>
+              <label><input type="checkbox" name="tos"> I agree to the terms</label>
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Checkboxes represent independent booleans; the value submits only if checked.</p>
+          <pre><code>&lt;label&gt;
+  &lt;input type="checkbox" name="tos"&gt; I agree
+&lt;/label&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 06 -->
+      <article id="06-radio" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Overall Experience</legend>
+              <label><input type="radio" name="exp" value="beginner" checked> Beginner</label>
+              <label><input type="radio" name="exp" value="intermediate"> Intermediate</label>
+              <label><input type="radio" name="exp" value="advanced"> Advanced</label>
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Radios are mutually exclusive when they share the same <code>name</code>.</p>
+          <pre><code>&lt;label&gt;&lt;input type="radio" name="exp" value="beginner" checked&gt; Beginner&lt;/label&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 07 -->
+      <article id="07-select" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Select</legend>
+              <label for="country">Country</label>
+              <select id="country" name="country">
+                <option value="">Please Select…</option>
+                <option>Canada</option>
+                <option>USA</option>
+                <option>Mexico</option>
+              </select>
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Native <code>&lt;select&gt;</code> handles keyboard and screen readers well; include a blank choice when the field is required.</p>
+          <pre><code>&lt;label for="country"&gt;Country&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+  &lt;option value=""&gt;Please Select…&lt;/option&gt;
+  &lt;option&gt;Canada&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 08 -->
+      <article id="08-textarea" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Textarea</legend>
+              <label for="comments">Comments</label>
+              <textarea id="comments" name="comments" rows="6" placeholder="Tell us more…"></textarea>
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p><code>&lt;textarea&gt;</code> for multi-line input; use <code>rows</code> and optional <code>maxlength</code>.</p>
+          <pre><code>&lt;label for="comments"&gt;Comments&lt;/label&gt;
+&lt;textarea id="comments" name="comments" rows="6"&gt;&lt;/textarea&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 09 -->
+      <article id="09-hidden" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <input type="hidden" name="course" value="webdev-tnt">
+            <p>Hidden metadata included: <code>course=webdev-tnt</code>.</p>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p><code>type="hidden"</code> submits fixed data without a visible control.</p>
+          <pre><code>&lt;input type="hidden" name="course" value="webdev-tnt"&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 10 -->
+      <article id="10-submit" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form" onsubmit="event.preventDefault(); alert('Submitted!');">
+            <h2>Form Factor - Staged Demo</h2>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Submitting posts to the form’s <code>action</code> (or triggers JS). You can also call <code>form.requestSubmit()</code> from scripts.</p>
+          <pre><code>&lt;form action="/signup" method="post"&gt;
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 11 -->
+      <article id="11-visually-hidden-labels" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Visually Hidden Label</legend>
+              <label for="search" class="visually-hidden">Search</label>
+              <input id="search" type="search" placeholder="Search…" />
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Placeholders are not labels. Keep a label in the DOM with a <code>.visually-hidden</code> utility if you must hide it.</p>
+          <pre><code>&lt;label for="search" class="visually-hidden"&gt;Search&lt;/label&gt;
+&lt;input id="search" type="search" placeholder="Search…"&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 12 -->
+      <article id="12-focus-styling" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Focus</legend>
+              <label for="focusDemo">Focus me</label>
+              <input id="focusDemo" type="text" placeholder="Tab here" />
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p>Use <code>:focus-visible</code> to show the ring for keyboard users, keeping mouse clicks clean.</p>
+          <pre><code>.form input:focus-visible { outline: 2px solid var(--focus-outline); }</code></pre>
+        </section>
+      </article>
+
+      <!-- 13 -->
+      <article id="13-required-attribute" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form" novalidate onsubmit="event.preventDefault(); this.reportValidity();">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Required</legend>
+              <label for="reqEmail">Email (required)</label>
+              <input id="reqEmail" name="reqEmail" type="email" required placeholder="name@example.com">
+              <input type="submit" value="Validate" />
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p><code>required</code> + semantic <code>type</code> activates built-in constraint validation—no JS needed.</p>
+          <pre><code>&lt;input type="email" required placeholder="name@example.com"&gt;</code></pre>
+        </section>
+      </article>
+
+      <!-- 14 -->
+      <article id="14-user-valid-invalid" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form" novalidate>
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>:user-valid / :user-invalid</legend>
+              <label for="uvEmail">Email</label>
+              <input id="uvEmail" type="email" required placeholder="name@example.com">
+              <label for="uvPwd">Password (min 8)</label>
+              <input id="uvPwd" type="password" minlength="8" required placeholder="••••••••">
+              <p>These inputs use <code>:user-valid</code>/<code>:user-invalid</code> if supported; otherwise they fall back to <code>:valid</code>/<code>:invalid</code>.</p>
+            </fieldset>
+          </form>
+        </div>
+        <section class="stage-notes">
+          <p><code>:user-*</code> only applies after user interaction—preventing “everything red on page load.” Fallback keeps broad support.</p>
+          <pre><code>@supports selector(:user-invalid) {
+  .form input:user-invalid { border-color: var(--invalid); }
+  .form input:user-valid { border-color: var(--valid); }
+}</code></pre>
+          <p class="note-new">Introduced in 2025 — supported in modern browsers.</p>
+        </section>
+      </article>
+
+      <!-- 15 (no notes) -->
+      <article id="15-all-in-one" class="panel" aria-hidden="true">
+        <div class="form-container glass stage-card">
+          <form class="form" onreset="this.querySelectorAll('input,textarea,select').forEach(el=>el.blur())">
+            <h2>Form Factor - Staged Demo</h2>
+            <fieldset>
+              <legend>Account Info</legend>
+              <label for="username">Username</label>
+              <input id="username" name="username" type="text" placeholder="Enter your username..." required>
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" placeholder="Enter your password..." minlength="8" required>
+            </fieldset>
+            <fieldset>
+              <legend>Dev Skills</legend>
+              <p>Programming Languages</p>
+              <label><input type="checkbox" name="lang" value="html"> HTML</label>
+              <label><input type="checkbox" name="lang" value="css"> CSS</label>
+              <label><input type="checkbox" name="lang" value="js"> JavaScript</label>
+              <label><input type="checkbox" name="lang" value="php"> PHP</label>
+              <p>Overall Experience</p>
+              <label><input type="radio" name="level" value="beginner" checked> Beginner</label>
+              <label><input type="radio" name="level" value="intermediate"> Intermediate</label>
+              <label><input type="radio" name="level" value="advanced"> Advanced</label>
+            </fieldset>
+            <fieldset>
+              <legend>Other</legend>
+              <label for="hear">How did you hear about us?</label>
+              <select id="hear" name="hear" required>
+                <option value="">Please Select…</option>
+                <option>Friend</option>
+                <option>Social</option>
+                <option>Search</option>
+                <option>Other</option>
+              </select>
+              <label for="allComments">Comments</label>
+              <textarea id="allComments" rows="6"></textarea>
+            </fieldset>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Clear Form" />
+          </form>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span class="brand">Professor Solo · WebDevTnT</span>
+    <span class="tag">© 2025 · “p.s. keep learning.”</span>
+  </footer>
+
+  <script>
+    const select = document.getElementById('stage');
+    const panels = [...document.querySelectorAll('.panel')];
+    const prevBtn = document.getElementById('prevStage');
+    const nextBtn = document.getElementById('nextStage');
+
+    function show(id) {
+      panels.forEach(p => p.setAttribute('aria-hidden', String(p.id !== id)));
+      const idx = [...select.options].findIndex(o => o.value === id);
+      if (idx >= 0) select.selectedIndex = idx;
+      history.replaceState(null, '', '#' + id);
+    }
+
+    function initFromHash() {
+      const id = location.hash.replace('#', '') || select.value;
+      show(document.getElementById(id) ? id : select.value);
+    }
+    select.addEventListener('change', e => show(e.target.value));
+    prevBtn.addEventListener('click', () => {
+      const i = Math.max(0, select.selectedIndex - 1);
+      show(select.options[i].value);
+    });
+    nextBtn.addEventListener('click', () => {
+      const i = Math.min(select.options.length - 1, select.selectedIndex + 1);
+      show(select.options[i].value);
+    });
+    window.addEventListener('hashchange', initFromHash);
+    initFromHash();
+  </script>
+</body>
+
+</html>
